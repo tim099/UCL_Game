@@ -1,3 +1,14 @@
-﻿{
-	"name": "UCL_Game"
+{
+    "name": "UCL_Game",
+    "references": [
+        "GUID:fb313712d3efc8045821678f6c8743af"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
 }
