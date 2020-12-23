@@ -1,6 +1,8 @@
 {
     "name": "UCL_GameEditor",
     "references": [
+        "GUID:fb313712d3efc8045821678f6c8743af",
+        "GUID:4c555891f72787444a02cc0388aa32db",
         "GUID:fe321214dbec5ed41a02b3e9fa7b1929"
     ],
     "includePlatforms": [
@@ -12,5 +14,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
