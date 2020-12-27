@@ -113,6 +113,7 @@ namespace UCL.GameLib
                                                 Color.green, Color.grey, Vector2.zero)) {
                                                 map.CreatePath(m_SelectedNode, node, m_AddPathDirection);
                                                 m_EditMode = EditMode.Normal;
+                                                m_SelectedNode = null;
                                             }
                                         }
                                         break;
