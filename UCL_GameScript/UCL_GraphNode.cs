@@ -32,6 +32,18 @@ namespace UCL.GameLib
 #endif
             m_Paths.Remove(path);
         }
+
+        public bool CanMoveTo(UCL_GraphNode node) {
+            var path = GetPath(node);
+            if(path == null) return false;
+            return path.CanMoveTo(node);
+        }
+        /// <summary>
+        /// Get the path between this node and target node, ignore the path direction
+        /// Return null if no path exist
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
         public UCL_GraphPath GetPath(UCL_GraphNode node) {
             for(int i = 0; i < m_Paths.Count; i++) {
                 var path = m_Paths[i];

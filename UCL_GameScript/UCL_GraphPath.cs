@@ -68,6 +68,23 @@ namespace UCL.GameLib
             m_B.RemovePath(this);
             p_Map.RemovePath(this);
         }
+        public bool CanMoveTo(UCL_GraphNode node) {
+            switch(m_Direction) {
+                case Direction.AtoB: {
+                        if(node == m_B) return true;
+                        break;
+                    }
+                case Direction.BtoA: {
+                        if(node == m_A) return true;
+                        break;
+                    }
+                case Direction.BothSide: {
+                        if(node == m_A || node == m_B) return true;
+                        break;
+                    }
+            }
+            return false;
+        }
         public UCL_GraphNode GetNext(UCL_GraphNode cur) {
             if(cur == m_A) return m_B;
             return m_A;
