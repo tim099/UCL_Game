@@ -106,7 +106,13 @@ namespace UCL.GameLib
             if(tmp == null) {
                 return null;
             }
-            var node = Instantiate(tmp, m_NodesRoot);
+            UCL_GraphNode node = null;
+#if UNITY_EDITOR
+            node = UnityEditor.PrefabUtility.InstantiatePrefab(tmp, m_NodesRoot) as UCL_GraphNode;
+#endif
+            if(node == null) {
+                node = Instantiate(tmp, m_NodesRoot);
+            }
 #if UNITY_EDITOR
             UnityEditor.Undo.RegisterCreatedObjectUndo(node.gameObject, "Create object");
 #endif
@@ -122,7 +128,12 @@ namespace UCL.GameLib
         public UCL_GraphPath CreatePath(UCL_GraphNode a,UCL_GraphNode b, UCL_GraphPath.Direction direction = UCL_GraphPath.Direction.BothSide) {
             var path = a.GetPath(b);
             if(path != null) return path;
+#if UNITY_EDITOR
+            path = UnityEditor.PrefabUtility.InstantiatePrefab(m_PathTemplate, m_PathsRoot) as UCL_GraphPath;
+#else
             path = Instantiate(m_PathTemplate, m_PathsRoot);
+#endif
+
 #if UNITY_EDITOR
             UnityEditor.Undo.RegisterCreatedObjectUndo(path.gameObject, "Create object");
 #endif
