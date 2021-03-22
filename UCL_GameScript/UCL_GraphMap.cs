@@ -62,7 +62,7 @@ namespace UCL.GameLib
         }
         internal void RemovePath(UCL_GraphPath path) {
 #if UNITY_EDITOR
-            if(!UnityEditor.EditorApplication.isPlaying) {
+            if(!UCL.Core.EditorLib.EditorApplicationMapper.isPlaying) {
                 UnityEditor.Undo.RecordObject(this, "Map RemovePath");
                 m_Paths.Remove(path);
                 return;
@@ -73,7 +73,7 @@ namespace UCL.GameLib
         public void DeletePath(UCL_GraphPath path) {
             path.Delete();
 #if UNITY_EDITOR
-            if(!UnityEditor.EditorApplication.isPlaying) {                
+            if(!UCL.Core.EditorLib.EditorApplicationMapper.isPlaying) {                
                 UnityEditor.Undo.DestroyObjectImmediate(path.gameObject);
                 return;
             }
@@ -90,7 +90,7 @@ namespace UCL.GameLib
             node.Delete();
             RemoveNode(node);
 #if UNITY_EDITOR
-            if(!UnityEditor.EditorApplication.isPlaying) {
+            if(!UCL.Core.EditorLib.EditorApplicationMapper.isPlaying) {
                 UnityEditor.Undo.DestroyObjectImmediate(node.gameObject);
                 return;
             }

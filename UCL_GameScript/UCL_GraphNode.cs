@@ -14,7 +14,7 @@ namespace UCL.GameLib
         public List<UCL_GraphPath> m_Paths;
         public void AddPath(UCL_GraphPath path) {
 #if UNITY_EDITOR
-            if(!UnityEditor.EditorApplication.isPlaying) {
+            if(!UCL.Core.EditorLib.EditorApplicationMapper.isPlaying) {
                 UnityEditor.Undo.RecordObject(this, "Node AddPath");
                 m_Paths.Add(path);
                 return;
@@ -24,7 +24,7 @@ namespace UCL.GameLib
         }
         public void RemovePath(UCL_GraphPath path) {
 #if UNITY_EDITOR
-            if(!UnityEditor.EditorApplication.isPlaying) {
+            if(!UCL.Core.EditorLib.EditorApplicationMapper.isPlaying) {
                 UnityEditor.Undo.RecordObject(this, "Node RemovePath");
                 m_Paths.Remove(path);
                 return;

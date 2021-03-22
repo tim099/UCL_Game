@@ -17,5 +17,10 @@ namespace UCL.GameLib.EditorLib
             var map = UCL_GraphMap.Create(p);
             UnityEditor.Selection.activeObject = map;
         }
+        [UnityEditor.MenuItem("UCL/GameLib/GameSetting")]
+        static public void OpenGameSetting()
+        {
+            UnityEditor.Selection.activeObject = UCL_GameSetting.Get();
+        }
     }
 }
