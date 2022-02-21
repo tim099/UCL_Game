@@ -56,9 +56,13 @@ namespace UCL.GameLib
             UnityEditor.Undo.RecordObject(transform, "Node UpdatePostion");
 #endif
             transform.position = pos;
-            for(int i = 0; i < m_Paths.Count; i++) {
-                var path = m_Paths[i];
-                path.UpdatePathPosition();
+            UpdatePathPosition();
+        }
+        public void UpdatePathPosition()
+        {
+            for (int i = 0; i < m_Paths.Count; i++)
+            {
+                m_Paths[i].UpdatePathPosition();
             }
         }
         internal void Delete() {
