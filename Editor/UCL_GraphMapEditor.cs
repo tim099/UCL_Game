@@ -159,14 +159,14 @@ namespace UCL.GameLib
                 GUILayout.BeginHorizontal();
                 map.m_SelectedNodeType = EditorGUILayout.Popup("NodeType", map.m_SelectedNodeType, m_Options);
                 if(GUILayout.Button("Create")) {
-                    int count = map.m_Nodes.Count;
-                    int x = count % 8;
-                    int y = ((count - x) / 8);
+                    int aCount = map.m_Nodes.Count;
+                    int x = aCount % 8;
+                    int y = ((aCount - x) / 8);
 
-                    var node = map.CreateNode(map.m_SelectedNodeType);
+                    var aNode = map.CreateNode(map.m_SelectedNodeType);
 
-                    var del = m_Corners[2] - m_Corners[0];
-                    node.transform.position = m_Corners[0] + new Vector3((del.x*(x+1))/9, (del.y * (y+1)) / 9,0);
+                    var aDel = m_Corners[2] - m_Corners[0];
+                    aNode.transform.position = m_Corners[0] + new Vector3((aDel.x*(x+1))/9, (aDel.y * (y+1)) / 9,0);
                 }
                 GUILayout.EndHorizontal();
                 GUILayout.EndVertical();

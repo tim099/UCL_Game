@@ -125,26 +125,26 @@ namespace UCL.GameLib
             m_Nodes.Add(node);
             return node;
         }
-        public UCL_GraphPath CreatePath(UCL_GraphNode a,UCL_GraphNode b, UCL_GraphPath.Direction direction = UCL_GraphPath.Direction.BothSide) {
-            var path = a.GetPath(b);
-            if(path != null) return path;
+        public UCL_GraphPath CreatePath(UCL_GraphNode iNodeA,UCL_GraphNode iNodeB, UCL_GraphPath.Direction iDirection = UCL_GraphPath.Direction.BothSide) {
+            var aPath = iNodeA.GetPath(iNodeB);
+            if(aPath != null) return aPath;
 #if UNITY_EDITOR
-            path = UnityEditor.PrefabUtility.InstantiatePrefab(m_PathTemplate, m_PathsRoot) as UCL_GraphPath;
+            aPath = UnityEditor.PrefabUtility.InstantiatePrefab(m_PathTemplate, m_PathsRoot) as UCL_GraphPath;
 #else
-            path = Instantiate(m_PathTemplate, m_PathsRoot);
+            aPath = Instantiate(m_PathTemplate, m_PathsRoot);
 #endif
 
 #if UNITY_EDITOR
-            UnityEditor.Undo.RegisterCreatedObjectUndo(path.gameObject, "Create object");
+            UnityEditor.Undo.RegisterCreatedObjectUndo(aPath.gameObject, "Create object");
 #endif
-            path.Init(this, a, b, direction);
-            a.AddPath(path);
-            b.AddPath(path);
+            aPath.Init(this, iNodeA, iNodeB, iDirection);
+            iNodeA.AddPath(aPath);
+            iNodeB.AddPath(aPath);
 #if UNITY_EDITOR
             UnityEditor.Undo.RecordObject(this, "m_Paths.Add");
 #endif
-            m_Paths.Add(path);
-            return path;
+            m_Paths.Add(aPath);
+            return aPath;
         }
     }
 }

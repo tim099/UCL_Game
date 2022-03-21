@@ -8,10 +8,12 @@ namespace UCL.GameLib
     {
         public enum Direction
         {
-            BothSide=0,
+            BothSide = 0,
             AtoB,
             BtoA,
         }
+
+        public bool IsEnable { get; set; } = true;
         public UCL_GraphNode m_A;
         public UCL_GraphNode m_B;
         public RectTransform m_Rect;
