@@ -11,6 +11,9 @@ namespace UCL.GameLib
             p_Map = _Map;
             gameObject.SetActive(true);
         }
+        /// <summary>
+        /// All paths connect to this node
+        /// </summary>
         public List<UCL_GraphPath> m_Paths;
         public void AddPath(UCL_GraphPath path) {
 #if UNITY_EDITOR
@@ -42,12 +45,12 @@ namespace UCL.GameLib
         /// Get the path between this node and target node, ignore the path direction
         /// Return null if no path exist
         /// </summary>
-        /// <param name="node"></param>
+        /// <param name="iNode"></param>
         /// <returns></returns>
-        public UCL_GraphPath GetPath(UCL_GraphNode node) {
+        public UCL_GraphPath GetPath(UCL_GraphNode iNode) {
             for(int i = 0; i < m_Paths.Count; i++) {
-                var path = m_Paths[i];
-                if(path.GetNext(this) == node) return path;
+                var aPath = m_Paths[i];
+                if(aPath.GetNext(this) == iNode) return aPath;
             }
             return null;
         }

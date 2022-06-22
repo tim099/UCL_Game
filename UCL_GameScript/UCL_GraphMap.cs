@@ -125,9 +125,31 @@ namespace UCL.GameLib
             m_Nodes.Add(node);
             return node;
         }
-        public UCL_GraphPath CreatePath(UCL_GraphNode iNodeA,UCL_GraphNode iNodeB, UCL_GraphPath.Direction iDirection = UCL_GraphPath.Direction.BothSide) {
+        /// <summary>
+        /// return true if there is path between iNodeA and iNodeB
+        /// </summary>
+        /// <param name="iNodeA"></param>
+        /// <param name="iNodeB"></param>
+        /// <returns></returns>
+        public bool HasPath(UCL_GraphNode iNodeA, UCL_GraphNode iNodeB)
+        {
             var aPath = iNodeA.GetPath(iNodeB);
-            if(aPath != null) return aPath;
+            if (aPath != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public UCL_GraphPath GetPath(UCL_GraphNode iNodeA, UCL_GraphNode iNodeB)
+        {
+            return iNodeA.GetPath(iNodeB);
+        }
+        public UCL_GraphPath CreatePath(UCL_GraphNode iNodeA, UCL_GraphNode iNodeB, UCL_GraphPath.Direction iDirection = UCL_GraphPath.Direction.BothSide) {
+            var aPath = iNodeA.GetPath(iNodeB);
+            if (aPath != null)
+            {
+                return aPath;
+            }
 #if UNITY_EDITOR
             aPath = UnityEditor.PrefabUtility.InstantiatePrefab(m_PathTemplate, m_PathsRoot) as UCL_GraphPath;
 #else
